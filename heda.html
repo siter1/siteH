@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как сильно обиделась Хеда?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0f7fa;
+            color: #00796b;
+        }
+        .slider-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            background: #00796b;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            border-radius: 5px;
+        }
+        .slider:hover {
+            opacity: 1;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #004d40;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #004d40;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .emojis {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .emojis span {
+            font-size: 24px;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #d32f2f;
+            display: none;
+        }
+        #extra-message {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #004d40;
+            display: none;
+            border: 1px solid #004d40;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e0f2f1;
+        }
+        #final-message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #004d40;
+            display: none;
+            border: 1px solid #004d40;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e0f2f1;
+        }
+        #additional-message {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #004d40;
+            display: none;
+            border: 1px solid #004d40;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e0f2f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <h2>Как сильно обиделась Хеда?</h2>
+        <input type="range" min="1" max="5" value="1" class="slider" id="slider">
+        <div class="emojis">
+            <span>😊</span>
+            <span>🙂</span>
+            <span>😐</span>
+            <span>🙁</span>
+            <span>😢</span>
+        </div>
+        <div id="message"></div>
+        <div id="additional-message">
+            <p>Твой голос все еще звучит в моих ушах.</p>
+        </div>
+        <div id="extra-message">
+            <p>Не будь в числе отчаивающихся Аль-Хиджр:55</p>
+        </div>
+        <div id="final-message">
+            <p>Пусть Аллах защитит твою улыбку и сердце. Я человек, который будет всегда рад видеть твою улыбку и твое счастливое сердце.</p>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const message = document.getElementById('message');
+        const additionalMessage = document.getElementById('additional-message');
+        const extraMessage = document.getElementById('extra-message');
+        const finalMessage = document.getElementById('final-message');
+
+        const messages = {
+            1: '',
+            2: 'Хеда, а может не надо?',
+            3: 'Хеда, ну серьезно?',
+            4: 'Хеда, подумаешь еще раз?',
+            5: 'Хеда, все будет хорошо!'
+        };
+
+        slider.addEventListener('input', function() {
+            const value = slider.value;
+            message.textContent = messages[value];
+            message.style.display = value > 1 ? 'block' : 'none';
+
+            // Показываем сообщение "Твой голос все еще звучит в моих ушах." только при значении 4
+            additionalMessage.style.display = value == 4 ? 'block' : 'none';
+
+            // Показываем сообщение "Не будь в числе отчаивающихся Аль-Хиджр:55" только при значении 3
+            extraMessage.style.display = value == 3 ? 'block' : 'none';
+            
+            // Показываем сообщение "Пусть Аллах защитит твою улыбку и сердце..." только при значении 5
+            finalMessage.style.display = value == 5 ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
